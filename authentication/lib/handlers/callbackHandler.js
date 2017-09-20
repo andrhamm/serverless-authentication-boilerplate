@@ -10,6 +10,7 @@ const utils = slsAuth.utils;
 const facebook = require('serverless-authentication-facebook');
 const google = require('serverless-authentication-google');
 const microsoft = require('serverless-authentication-microsoft');
+const reddit = require('serverless-authentication-reddit');
 const customGoogle = require('../custom-google');
 
 // Common
@@ -108,6 +109,9 @@ function callbackHandler(proxyEvent, context) {
       break;
     case 'microsoft':
       microsoft.callbackHandler(event, providerConfig, handleResponse);
+      break;
+    case 'reddit':
+      reddit.callbackHandler(event, providerConfig, handleResponse);
       break;
     case 'custom-google':
       customGoogle.callbackHandler(event, providerConfig, handleResponse); // See ./customGoogle.js
